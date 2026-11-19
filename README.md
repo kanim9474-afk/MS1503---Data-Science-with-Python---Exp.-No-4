@@ -40,23 +40,47 @@ To visualize the yearly trend of company revenue and expenses from 2017 to 2023 
 
 ## Program / Code
 
-#Company Revenue and Expense Visualization using Matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+#Company Revenue and Expense Visualization using Matplotlib  
+import matplotlib.pyplot as plt  
+import numpy as np  
 
-#Step 1: Create dataset
+# Step 1: Create dataset  
+years = np.arange(2017, 2024)  
+revenue = [20, 25, 28, 35, 40, 45, 52]  # in lakhs  
+expenses = [15, 18, 22, 27, 30, 33, 38]  # in lakhs  
+# Step 2: Plot revenue and expenses   
+plt.figure(figsize=(8, 5))  
+plt.plot(years, revenue, marker='o', color='green', linewidth=2, label='Revenue')  
+plt.plot(years, expenses, marker='s', color='red', linestyle='--', linewidth=2, label='Expenses')  
+# Step 3: Add title, axis labels, and grid  
+plt.title('Company Revenue and Expense Trends (2017 - 2023)', fontsize=13, fontweight='bold')  
+plt.xlabel('Year', fontsize=11)  
+plt.ylabel('Amount (in Lakhs)', fontsize=11)  
+plt.grid(True, linestyle='--', alpha=0.6)  
+# Step 4: Add legend  
+plt.legend(loc='upper left')  
+# Step 5: Annotate highest revenue and highest expense  
+max_rev_index = np.argmax(revenue)  
+max_exp_index = np.argmax(expenses)  
 
-#Step 2: Plot Revenue and Expenses
+plt.annotate(
+    f'Highest Revenue: {revenue[max_rev_index]}L',  
+    xy=(years[max_rev_index], revenue[max_rev_index]),  
+    xytext=(years[max_rev_index] - 0.5, revenue[max_rev_index] + 2),  
+    arrowprops=dict(facecolor='black', arrowstyle='->')  
+)
 
-#Step 3: Add titles, labels, and grid
-
-#Step 4: Add legend
-
-#Step 5: Annotate highest revenue and expense
-
-#Step 6: Adjust layout and show plot
-
+plt.annotate(
+    f'Highest Expense: {expenses[max_exp_index]}L',  
+    xy=(years[max_exp_index], expenses[max_exp_index]),  
+    xytext=(years[max_exp_index] - 0.5, expenses[max_exp_index] + 2),  
+    arrowprops=dict(facecolor='black', arrowstyle='->')  
+)
+# Step 6: Adjust layout and display plot  
+plt.tight_layout()  
+plt.show()  
 ## Output
+<img width="565" height="393" alt="image" src="https://github.com/user-attachments/assets/eacc2ce7-9a90-412a-979f-7ac8c96841c0" />
 
 
 ## Result
